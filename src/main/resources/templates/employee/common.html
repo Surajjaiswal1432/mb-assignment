@@ -1,0 +1,20 @@
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<div th:include="/header/header :: header"></div>
+<div th:include="/nav/nav :: navBar"></div>
+</head>
+<body>
+
+
+
+	<div th:include="/employee/all-employee-recored :: allEmployee"></div>
+
+	<script type="text/javascript">
+		
+		$(window).on('load', function() {
+			$('#myModal').modal('show');
+		});
+	</script>
+
+</body>
+</html>

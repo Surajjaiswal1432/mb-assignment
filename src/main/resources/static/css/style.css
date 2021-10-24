@@ -1,0 +1,9 @@
+.error {
+	color: red;
+	font-style: italic;
+}
+
+.message {
+	color: green;
+	font-style: italic;
+}

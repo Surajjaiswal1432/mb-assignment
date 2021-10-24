@@ -1,0 +1,75 @@
+
+<html xmlns:th="https://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<div th:include="/header/header :: header"></div>
+<div th:include="/nav/nav :: navBar"></div>
+</head>
+<body>
+	<div th:fragment="allEmployee">
+
+
+		<div th:include="/employee/add-employee :: addEmployee"></div>
+
+
+		<div class="container">
+			<div class="form-group">
+				<button type="button"
+					class=" float-right bi bi-plus btn btn-success" data-toggle="modal"
+					data-target="#myModal">Add Employee</button>
+			</div>
+			<div class="form-group">
+				<div th:include="/nav/nav :: pagination"></div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="message alert alert-success" id="msg" th:if=${message}
+					th:text="${message}"></div>
+			</div>
+
+			<div class="table-responsive-lg">
+
+				<table class="table table-hover ">
+					<thead class="thead-dark">
+						<tr>
+							<!-- <th>Employee Id</th> -->
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Date Of Birth</th>
+							<th>Mobile</th>
+							<th>Address</th>
+							<th>City</th>
+							<th>Delete</th>
+							<th>Update</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="employee : ${employees}">
+							<!-- <td th:text="${employee.empId}"></td> -->
+							<td th:text="${employee.firstname}"></td>
+							<td th:text="${employee.lastname}"></td>
+							<td th:text="${employee.dob}"></td>
+							<td th:text="${employee.mobile}"></td>
+							<td th:text="${employee.address}"></td>
+							<td th:text="${employee.city}"></td>
+							<td><a th:href="@{/employee/delete(id=${employee.empId})}"
+								onclick="return confirm('Do you want to delete?')"
+								class="btn btn-danger">Delete</a></td>
+							<td><a th:href="@{/employee/update(id=${employee.empId})}"
+								class="btn btn-primary">Update</a></td>
+
+
+						</tr>
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

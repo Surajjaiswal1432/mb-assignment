@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<div th:include="header/header::header"></div>
+</head>
+
+<body>
+	<div class="container">
+
+		<h2>Manager Sign Up</h2>
+
+		<div class="message" th:if=${message} th:text="${message}"></div>
+		<form th:action="@{/storeInformation}" th:object="${manager}"
+			method="post">
+
+			<div class="design col-sm-6">
+				<div class="form-group">
+					<label for="firstname">First Name:</label> <input type="text"
+						class="form-control" id="firstname" name="firstname"
+						placeholder=" Your firstname" th:field="*{firstname}"> <span
+						class="error" th:if="${#fields.hasErrors('firstname')}"
+						th:errors="*{firstname}"></span>
+
+				</div>
+				<div class="form-group">
+					<label for="lastname">Last Name:</label> <input type="text"
+						class="form-control" id="lastname"
+						placeholder="Enter Your lastname" name="lastname"
+						th:field="*{lastname}"> <span class="error"
+						th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+				</div>
+				<div class="form-group">
+					<label for="email">Email:</label> <input type="text"
+						class="form-control" id="email" placeholder="Enter Your email"
+						name="email" th:field="*{email}"> <span class="error"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+					<span class="error" th:text="${email}"></span>
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label> <input type="text"
+						class="form-control" placeholder="Enter Your password"
+						name="password" th:field="*{password}"> <span
+						class="error" th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}"></span>
+				</div>
+				<div class="form-group">
+					<label for="address">Address:</label> <input type="text"
+						class="form-control" id="address" placeholder="Enter Your Address"
+						name="address" th:field="*{address}"> <span class="error"
+						th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+				</div>
+
+				<div class="form-group">
+					<label for="dob">Date of Birth:</label> <input type="date"
+						class="form-control" id="dob" name="dob" th:field="*{dob}">
+				</div>
+
+				<div class="form-group">
+					<label for="company">Company:</label> <input type="text"
+						class="form-control" id="company" placeholder="Enter Your company"
+						name="company" th:field="*{company}"> <span class="error"
+						th:if="${#fields.hasErrors('company')}" th:errors="*{company}"></span>
+				</div>
+				<button type="submit" class="btn btn-primary" id="submit">Submit</button>
+				<div class="text-right">
+					<a href="/signin" class="text-info">Alredy register?</a>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>
